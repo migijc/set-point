@@ -1,20 +1,20 @@
 import {Button, Text, View} from 'react-native';
-import CurrentGameScore from './CurrentGameScore';
-import { useContext, useEffect } from 'react';
-import { matchContext } from './Match';
+import {useContext, useEffect} from 'react';
+import {matchContext} from './contexts/MatchContextProvider';
 
 export default function CurrentSetScore() {
-    const {matchData} = useContext(matchContext); 
-    useEffect(()=>{
-        console.log(matchData)
-    })
+  const {currentSetData} = useContext(matchContext);
+
   return (
-    <View style={{flexDirection:'row'}}>
-      <View style={{padding:3, backgroundColor:'cyan'}}>
-        <Text>{matchData.currentSet.homeTeamTotalGames}</Text>
-        <Text>{matchData.currentSet.awayTeamTotalGames}</Text>
+    <View style={{flexDirection: 'row'}}>
+      <View>
+        <View style={{backgroundColor: '#c8ff00', aspectRatio:1}}>
+          <Text style={{textAlign:'center', fontWeight:'bold'}}>{currentSetData.homeTotalGames}</Text>
+        </View>
+        <View style={{backgroundColor: '#c8ff00', aspectRatio:1}}>
+          <Text style={{textAlign:'center', fontWeight:'bold'}}>{currentSetData.awayTotalGames}</Text>
+        </View>
       </View>
-      <CurrentGameScore />
     </View>
   );
 }

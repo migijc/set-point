@@ -17,7 +17,8 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Match from './components/ScoreKeeper.js/Match';
+import { colors } from './styles/appColors';
+import NewMatch from './components/NewMatch';
 
 
 function App() {
@@ -28,12 +29,14 @@ function App() {
   };
 
   return (
-    <SafeAreaView style={{flex:1, backgroundColor:'#080b16'}}>
-      <View style={{flex:1, gap:5}}>
-        <View style={{backgroundColor:'#ffffff1c', padding:5, justifyContent:'center', alignItems:'center'}}>
-          <Text style={{color:'#ffffffad', textAlign:'center', fontStyle:'italic'}}>SetPoint</Text>
-        </View>
-        <Match />
+    <SafeAreaView style={{flex:1, backgroundColor:colors.darkText ,padding:8 }}>
+      <View style={{flex:1}}>
+        {/* <View style={{padding:2, justifyContent:'center', alignItems:'center', backgroundColor:'#616161ff'}}>
+          <Text style={{color:'#d0ff00', textAlign:'center', fontStyle:'italic' }}>SetPoint</Text>
+        </View> */}
+        {/* <Match /> */}
+        {/* <SetScoreProvider /> */}
+        <NewMatch/>
       </View>
     </SafeAreaView>
   );

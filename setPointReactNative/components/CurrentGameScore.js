@@ -1,22 +1,29 @@
 import {View, Text, Button} from 'react-native';
-import {matchContext} from './Match';
-import {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect, useState, React} from 'react';
+import {matchContext} from './contexts/MatchContextProvider';
+import {useMatchContext} from './contexts/customHooks/useMatchContext';
 
 export default function CurrentGameScore(props) {
-  const {matchData, setMatchData} = useContext(matchContext);
-  const [deuceCount, setDeuceCount] = useState(0);
-  const [isGameSet, setIsGameSet] = useState(false);
-
+  const {currentGameData} = useContext(matchContext);
+  const {homeTotalPoints, awayTotalPoints} = currentGameData;
 
   return (
-    <View>
-      <View style={{backgroundColor:'#eeeeee', alignSelf:'flex-start', padding:3}}>
-        <Text>{matchData.currentSet.currentGame.homeScore}</Text>
-        <Text>{matchData.currentSet.currentGame.awayScore}</Text>
+    <View style={{backgroundColor: '#ffffff'}}>
+      <View style={{aspectRatio:1}}>
+        <Text style={{textAlign:'center', fontWeight:'bold'}}>{gamePointsMap[homeTotalPoints]}</Text>
       </View>
-
-      {/* <Button title="ADD HOME" onPress={addHomePoint} />
-      <Button title="ADD Away" onPress={addAwayPoint} /> */}
+      <View>
+        <Text style={{textAlign:'center', fontWeight:'bold'}}>{gamePointsMap[awayTotalPoints]}</Text>
+      </View>
     </View>
   );
+}
+
+const gamePointsMap = {
+  0: 0,
+  1: 15,
+  2: 30,
+  3: 40,
+  4: 'AD',
+  5: '',
 }
